@@ -1,0 +1,1 @@
+python.exe ..\tools\gyp\gyp opengl_super_bible5.gyp -I ..\third_party\angle\build\common.gypi
