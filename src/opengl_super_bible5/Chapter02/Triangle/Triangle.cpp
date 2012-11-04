@@ -78,8 +78,7 @@ int main(int argc, char* argv[])
     glutReshapeFunc(ChangeSize);
     glutDisplayFunc(RenderScene);
 
-#ifdef ANGLE
-#else//ANGLE
+#ifndef ANGLE
 	GLenum err = glewInit();
 	if (GLEW_OK != err) {
 		fprintf(stderr, "GLEW Error: %s\n", glewGetErrorString(err));

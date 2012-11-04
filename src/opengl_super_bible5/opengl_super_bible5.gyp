@@ -51,34 +51,25 @@
           },
         },
         {
-          'target_name': 'esGLUT',
-          'type': 'static_library',
-          'include_dirs': [
-            '<(DEPTH)/third_party/esGLUT/include/',
-          ],
-          'sources': [
-            '<(DEPTH)/third_party/esGLUT/include/esGLUT/esGLUT.h',
-            '<(DEPTH)/third_party/esGLUT/src/esGLUT.c',
-            '<(DEPTH)/third_party/esGLUT/src/esGLUT_get.c',
-            '<(DEPTH)/third_party/esGLUT/src/esGLUT_internal.h',
-            '<(DEPTH)/third_party/esGLUT/src/esGLUT_utils.c',
-            '<(DEPTH)/third_party/esGLUT/src/esGLUT_win32.c',
-          ],
-          'direct_dependent_settings': {
-            'include_dirs': [
-              '<(DEPTH)/third_party/esGLUT/include/',
-            ],
-          },
-        },
-        {
           'target_name': 'triangle',
           'type': 'executable',
           'dependencies': [
-            'esGLUT',
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
             'gltools',
           ],
           'sources': [
             'Chapter02/Triangle/Triangle.cpp',
+          ],
+        },
+        {
+          'target_name': 'move',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'Chapter02/Move/Move.cpp',
           ],
         },
       ],
