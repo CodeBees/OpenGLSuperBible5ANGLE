@@ -72,6 +72,17 @@
             'Chapter02/Move/Move.cpp',
           ],
         },
+        {
+          'target_name': 'bounce',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'Chapter02/Bounce/Bounce.cpp',
+          ],
+        },
       ],
     }],
   ],
