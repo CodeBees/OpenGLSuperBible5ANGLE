@@ -86,10 +86,10 @@ typedef double M3DMatrix44d[16];	// A 4 x 4 matrix, column major (doubles) - Ope
 
 ///////////////////////////////////////////////////////////////////////////////
 // Useful constants
-#define M3D_PI (3.14159265358979323846)
-#define M3D_2PI (2.0 * M3D_PI)
-#define M3D_PI_DIV_180 (0.017453292519943296)
-#define M3D_INV_PI_DIV_180 (57.2957795130823229)
+#define M3D_PI (3.14159265358979323846f)
+#define M3D_2PI (2.0f * M3D_PI)
+#define M3D_PI_DIV_180 (0.017453292519943296f)
+#define M3D_INV_PI_DIV_180 (57.2957795130823229f)
 
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -9,6 +9,10 @@
       'OPENGL_ES',
     ],
   },
+  'includes': [
+    'Chapter02/chapter02.gypi',
+    'Chapter03/chapter03.gypi',
+  ],
   'targets': [
   ],
   'conditions': [
@@ -49,39 +53,6 @@
               '<(DEPTH)/third_party/angle/include',
             ],
           },
-        },
-        {
-          'target_name': 'triangle',
-          'type': 'executable',
-          'dependencies': [
-            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
-            'gltools',
-          ],
-          'sources': [
-            'Chapter02/Triangle/Triangle.cpp',
-          ],
-        },
-        {
-          'target_name': 'move',
-          'type': 'executable',
-          'dependencies': [
-            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
-            'gltools',
-          ],
-          'sources': [
-            'Chapter02/Move/Move.cpp',
-          ],
-        },
-        {
-          'target_name': 'bounce',
-          'type': 'executable',
-          'dependencies': [
-            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
-            'gltools',
-          ],
-          'sources': [
-            'Chapter02/Bounce/Bounce.cpp',
-          ],
         },
       ],
     }],
