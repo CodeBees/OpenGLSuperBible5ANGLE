@@ -19,6 +19,17 @@
             'Primitives/Primitives.cpp',
           ],
         },
+        {
+          'target_name': 'geotest',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'GeoTest/GeoTest.cpp',
+          ],
+        },
       ],
     }],
   ],

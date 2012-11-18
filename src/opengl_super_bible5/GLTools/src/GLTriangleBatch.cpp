@@ -67,6 +67,10 @@ GLTriangleBatch::GLTriangleBatch(void)
     nMaxIndexes = 0;
     nNumIndexes = 0;
     nNumVerts = 0;
+
+#ifdef ANGLE
+	primitiveType = GL_TRIANGLES;
+#endif//ANGLE
     }
     
 ////////////////////////////////////////////////////////////
@@ -259,8 +263,11 @@ void GLTriangleBatch::Draw(void)
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, bufferObjects[INDEX_DATA]);
     #endif
 
-
+#ifdef ANGLE
+    glDrawElements(primitiveType, nNumIndexes, GL_UNSIGNED_SHORT, 0);
+#else//ANGLE
     glDrawElements(GL_TRIANGLES, nNumIndexes, GL_UNSIGNED_SHORT, 0);
+#endif//ANGLE
     
     #ifndef OPENGL_ES
     // Unbind to anybody

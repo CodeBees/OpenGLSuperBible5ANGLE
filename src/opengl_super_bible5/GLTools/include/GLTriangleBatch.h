@@ -107,6 +107,10 @@ class GLTriangleBatch : public GLBatchBase
         
         // Draw - make sure you call glEnableClientState for these arrays
         virtual void Draw(void);
+
+#ifdef ANGLE
+		void SetPrimitiveType(GLenum newPritiveType) { primitiveType = newPritiveType; }
+#endif//ANGLE
         
     protected:
         GLushort  *pIndexes;        // Array of indexes
@@ -120,6 +124,10 @@ class GLTriangleBatch : public GLBatchBase
         
         GLuint bufferObjects[4];
 		GLuint vertexArrayBufferObject;
+
+#ifdef ANGLE
+		GLenum primitiveType;
+#endif//ANGLE
     };
 
 
