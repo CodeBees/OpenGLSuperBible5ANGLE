@@ -41,6 +41,17 @@
             'scissor/scissor.cpp',
           ],
         },
+        {
+          'target_name': 'blending',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'Blending/Blending.cpp',
+          ],
+        },
       ],
     }],
   ],
