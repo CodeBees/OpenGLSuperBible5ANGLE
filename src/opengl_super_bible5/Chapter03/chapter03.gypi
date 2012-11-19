@@ -30,6 +30,17 @@
             'GeoTest/GeoTest.cpp',
           ],
         },
+        {
+          'target_name': 'scissor',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'scissor/scissor.cpp',
+          ],
+        },
       ],
     }],
   ],
