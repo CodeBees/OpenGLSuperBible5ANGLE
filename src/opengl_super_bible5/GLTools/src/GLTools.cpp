@@ -47,6 +47,9 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 #ifdef __APPLE__
 #include <unistd.h>
 #endif
+#ifdef ANGLE
+#include <direct.h>
+#endif
 
 #include "math3d.h"
 #include "GLTriangleBatch.h"
@@ -124,7 +127,7 @@ int gltIsExtSupported(const char *extension)
 // the /Resources folder
 void gltSetWorkingDirectory(const char *szArgv)
 	{
-	#ifdef __APPLE__
+	#if defined __APPLE__ || ANGLE
 	static char szParentDirectory[255];   	
 
 	///////////////////////////////////////////////////////////////////////////   
@@ -138,14 +141,22 @@ void gltSetWorkingDirectory(const char *szArgv)
 	while (*c != '\0')     // go to end 
 	c++;
 
+#ifdef __APPLE__
 	while (*c != '/')      // back up to parent 
+#elif ANGLE
+	while (!(*c == '/' || *c == '\\'))	// back up to parent, compatible with Windows
+#endif
 	c--;
 
 	*c++ = '\0';           // cut off last part (binary name) 
 
 	///////////////////////////////////////////////////////////////////////////   
 	// Change to Resources directory. Any data files need to be placed there 
+#ifdef __APPLE__
 	chdir(szParentDirectory);
+#elif ANGLE
+	_chdir(szParentDirectory);
+#endif
 #ifndef OPENGL_ES
 	chdir("../Resources");
 #endif
