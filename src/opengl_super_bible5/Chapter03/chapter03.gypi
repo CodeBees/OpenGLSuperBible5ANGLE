@@ -52,6 +52,17 @@
             'Blending/Blending.cpp',
           ],
         },
+        {
+          'target_name': 'smoother',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'Smoother/Smoother.cpp',
+          ],
+        },
       ],
     }],
   ],

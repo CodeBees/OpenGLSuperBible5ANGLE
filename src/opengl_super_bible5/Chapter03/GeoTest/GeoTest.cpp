@@ -33,7 +33,7 @@ GLShaderManager     shaderManager;
 int iCull = 0;
 int iDepth = 0;
 
-#ifdef ANGLE
+#ifdef OPENGL_ES
 #include <string>
 GLenum primitiveType = GL_TRIANGLES;
 
@@ -72,7 +72,9 @@ static const char *szDefaultLightFP =
 "void main(void) { "
 " gl_FragColor = vFragColor; "
 "}";
+#endif//OPENGL_ES
 
+#ifdef ANGLE
 void UpdateTitle()
 {
 	std::string strTitle = "Geometry Test Program";
@@ -179,9 +181,9 @@ void RenderScene(void)
             
     GLfloat vRed[] = { 1.0f, 0.0f, 0.0f, 1.0f };
     //shaderManager.UseStockShader(GLT_SHADER_FLAT, transformPipeline.GetModelViewProjectionMatrix(), vRed);
-#ifndef ANGLE
+#ifndef OPENGL_ES
     shaderManager.UseStockShader(GLT_SHADER_DEFAULT_LIGHT, transformPipeline.GetModelViewMatrix(), transformPipeline.GetProjectionMatrix(), vRed);
-#else//ANGLE
+#else//OPENGL_ES
 	glUseProgram(uiShaderDefaultLightPointSize4);
 	GLint iModelMatrix, iProjMatrix, iColor;
 	iModelMatrix = glGetUniformLocation(uiShaderDefaultLightPointSize4, "mvMatrix");
@@ -194,7 +196,7 @@ void RenderScene(void)
 	glUniform4fv(iColor, 1, vRed);
 
 	torusBatch.SetPrimitiveType(primitiveType);
-#endif//ANGLE
+#endif//OPENGL_ES
 
     torusBatch.Draw();
 
@@ -212,18 +214,18 @@ void SetupRC()
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f );
 
     shaderManager.InitializeStockShaders();
-#ifdef ANGLE
+#ifdef OPENGL_ES
 	uiShaderDefaultLightPointSize4 = gltLoadShaderPairSrcWithAttributes(szDefaultLightVP, szDefaultLightFP, 2,
 		GLT_ATTRIBUTE_VERTEX, "vVertex", GLT_ATTRIBUTE_NORMAL, "vNormal");
-#endif//ANGLE
+#endif//OPENGL_ES
     viewFrame.MoveForward(7.0f);
 
     // Make the torus
     gltMakeTorus(torusBatch, 1.0f, 0.3f, 52, 26);
 
-#ifndef ANGLE
+#ifndef OPENGL_ES
     glPointSize(4.0f);
-#endif//ANGLE
+#endif//OPENGL_ES
 }
 
 void SpecialKeys(int key, int x, int y)
@@ -299,8 +301,8 @@ int main(int argc, char* argv[])
 	SetupRC();
     
 	glutMainLoop();
-#ifdef ANGLE
+#ifdef OPENGL_ES
 	glDeleteProgram(uiShaderDefaultLightPointSize4);
-#endif//ANGLE
+#endif//OPENGL_ES
 	return 0;
     }

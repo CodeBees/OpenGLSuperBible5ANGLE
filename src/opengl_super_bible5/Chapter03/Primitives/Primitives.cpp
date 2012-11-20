@@ -50,7 +50,7 @@ GLfloat vBlack[] = { 0.0f, 0.0f, 0.0f, 1.0f };
 // Keep track of effects step
 int nStep = 0;
 
-#ifdef ANGLE
+#ifdef OPENGL_ES
 GLBatch				wireFrameTriangleBatch;
 GLBatch				wireFrameTriangleFanBatch;
 GLBatch				wireFrameTriangleStripBatch;
@@ -61,21 +61,22 @@ GLuint				pointSizeShader;
 // Flat Shader (GLT_SHADER_FLAT)
 // This shader applies the given model view matrix to the verticies, 
 // and uses a uniform color value.
-static const char *szFlatShaderVP =	"uniform mat4 mvpMatrix;"
-									"attribute vec4 vVertex;"
-									"void main(void) "
-									"{ gl_Position = mvpMatrix * vVertex; "
-									" gl_PointSize = 4.0;"
-									"}";
+static const char *szFlatShaderVP =	
+"uniform mat4 mvpMatrix;"
+"attribute vec4 vVertex;"
+"void main(void) "
+"{ gl_Position = mvpMatrix * vVertex; "
+" gl_PointSize = 4.0;"
+"}";
 
 static const char *szFlatShaderFP = 
 #ifdef OPENGL_ES
-									"precision mediump float;"
+"precision mediump float;"
 #endif
-									"uniform vec4 vColor;"
-									"void main(void) "
-									"{ gl_FragColor = vColor; "
-									"}";
+"uniform vec4 vColor;"
+"void main(void) "
+"{ gl_FragColor = vColor; "
+"}";
 
 // pGeneratedVerts needs deleted by caller.
 bool GenWireFrameTriangleFan(M3DVector3f *vVerts, GLuint nVerts, GLfloat **pGeneratedVerts, GLuint *nGeneratedVertsCount, GLenum *nPrimitiveType)
@@ -126,7 +127,7 @@ bool GenWireFrameTriangleStrip(M3DVector3f *vVerts, GLuint nVerts, GLfloat **pGe
 	*nPrimitiveType = GL_LINES;
 	return true;
 }
-#endif//ANGLE
+#endif//OPENGL_ES
 
 ///////////////////////////////////////////////////////////////////////////////
 // This function does any needed initialization on the rendering context. 
@@ -138,9 +139,9 @@ void SetupRC()
 
 	shaderManager.InitializeStockShaders();
 	
-#ifdef ANGLE
+#ifdef OPENGL_ES
 	pointSizeShader = gltLoadShaderPairSrcWithAttributes(szFlatShaderVP, szFlatShaderFP, 1, GLT_ATTRIBUTE_VERTEX, "vVertex");
-#endif//ANGLE
+#endif//OPENGL_ES
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -204,11 +205,11 @@ void SetupRC()
     triangleBatch.CopyVertexData3f(vPyramid);
     triangleBatch.End();
 
-#ifdef ANGLE
+#ifdef OPENGL_ES
 	wireFrameTriangleBatch.Begin(GL_LINE_LOOP, 12);
 	wireFrameTriangleBatch.CopyVertexData3f(vPyramid);
     wireFrameTriangleBatch.End();
-#endif//ANGLE
+#endif//OPENGL_ES
 
     // For a Triangle fan, just a 6 sided hex. Raise the center up a bit
     GLfloat vPoints[100][3];    // Scratch array, more than we need
@@ -236,7 +237,7 @@ void SetupRC()
     triangleFanBatch.CopyVertexData3f(vPoints);
     triangleFanBatch.End();     
 
-#ifdef ANGLE
+#ifdef OPENGL_ES
 	GLfloat* pGeneratedVerts = NULL;
 	GLuint nGeneratedVertCount = 0;
 	GLenum nPrimitiveType = 0;
@@ -248,7 +249,7 @@ void SetupRC()
 		delete pGeneratedVerts;
 		pGeneratedVerts = NULL;
 	}
-#endif//ANGLE
+#endif//OPENGL_ES
         
     // For triangle strips, a little ring or cylinder segment
     int iCounter = 0;
@@ -286,7 +287,7 @@ void SetupRC()
     triangleStripBatch.CopyVertexData3f(vPoints);
     triangleStripBatch.End();    
 
-#ifdef ANGLE
+#ifdef OPENGL_ES
 	if(GenWireFrameTriangleStrip(vPoints, iCounter, &pGeneratedVerts, &nGeneratedVertCount, &nPrimitiveType))
 	{
 		wireFrameTriangleStripBatch.Begin(nPrimitiveType, nGeneratedVertCount);
@@ -295,12 +296,12 @@ void SetupRC()
 		delete pGeneratedVerts;
 		pGeneratedVerts = NULL;
 	}
-#endif//ANGLE
+#endif//OPENGL_ES
     }
 
 
 /////////////////////////////////////////////////////////////////////////
-#ifdef ANGLE
+#ifdef OPENGL_ES
 	void DrawWireFramedBatchES(GLBatch* pBatch, GLBatch* pBatchWireFrame)
 	{
 		// Draw the batch solid green
@@ -318,7 +319,7 @@ void SetupRC()
 		// Put everything back the way we found it
 		glDisable(GL_BLEND);
 	}
-#else//ANGLE
+#else//OPENGL_ES
 void DrawWireFramedBatch(GLBatch* pBatch)
     {
     // Draw the batch solid green
@@ -347,7 +348,7 @@ void DrawWireFramedBatch(GLBatch* pBatch)
     glDisable(GL_BLEND);
     glDisable(GL_LINE_SMOOTH);
     }
-#endif//ANGLE
+#endif//OPENGL_ES
 
 ///////////////////////////////////////////////////////////////////////////////
 // Called to draw scene
@@ -369,11 +370,11 @@ void RenderScene(void)
 
         switch(nStep) {
             case 0:
-#ifndef ANGLE
+#ifndef OPENGL_ES
 				glPointSize(4.0f);
 				pointBatch.Draw();
 				glPointSize(1.0f);
-#else//ANGLE
+#else//OPENGL_ES
 				glUseProgram(pointSizeShader);
 				GLint iTransform, iColor;
 				iTransform = glGetUniformLocation(pointSizeShader, "mvpMatrix");
@@ -383,7 +384,7 @@ void RenderScene(void)
 				glUniform4fv(iColor, 1, vBlack);
 
 				pointBatch.Draw();
-#endif//ANGLE
+#endif//OPENGL_ES
                 break;
             case 1:
                 glLineWidth(2.0f);
@@ -401,21 +402,21 @@ void RenderScene(void)
                 glLineWidth(1.0f);
                 break;
             case 4:
-#ifndef ANGLE
+#ifndef OPENGL_ES
                 DrawWireFramedBatch(&triangleBatch);
 #else
 				DrawWireFramedBatchES(&triangleBatch, &wireFrameTriangleBatch);
 #endif
 				break;
             case 5:
-#ifndef ANGLE
+#ifndef OPENGL_ES
                 DrawWireFramedBatch(&triangleStripBatch);
 #else
 				DrawWireFramedBatchES(&triangleStripBatch, &wireFrameTriangleStripBatch);
 #endif
 				break;
             case 6:
-#ifndef ANGLE
+#ifndef OPENGL_ES
                 DrawWireFramedBatch(&triangleFanBatch);
 #else
 				DrawWireFramedBatchES(&triangleFanBatch, &wireFrameTriangleFanBatch);
@@ -530,9 +531,9 @@ int main(int argc, char* argv[])
 
 	glutMainLoop();
 
-#ifdef ANGLE
+#ifdef OPENGL_ES
 	glDeleteProgram(pointSizeShader);
-#endif//ANGLE
+#endif//OPENGL_ES
 
 	return 0;
 	}
