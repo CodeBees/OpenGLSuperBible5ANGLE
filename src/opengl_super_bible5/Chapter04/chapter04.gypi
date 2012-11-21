@@ -19,6 +19,17 @@
             'Move/Move.cpp',
           ],
         },
+        {
+          'target_name': 'chapter04_objects',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'Objects/Objects.cpp',
+          ],
+        },
       ],
     }],
   ],
