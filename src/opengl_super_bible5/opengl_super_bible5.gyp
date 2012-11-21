@@ -12,6 +12,7 @@
   'includes': [
     'Chapter02/chapter02.gypi',
     'Chapter03/chapter03.gypi',
+    'Chapter04/chapter04.gypi',
     'Chapter05/chapter05.gypi',
   ],
   'targets': [
