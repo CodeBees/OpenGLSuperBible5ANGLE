@@ -41,6 +41,17 @@
             'Orthographic/Orthographic.cpp',
           ],
         },
+        {
+          'target_name': 'chapter04_perspective',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'Perspective/Perspective.cpp',
+          ],
+        },
       ],
     }],
   ],
