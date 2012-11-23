@@ -52,6 +52,17 @@
             'Perspective/Perspective.cpp',
           ],
         },
+        {
+          'target_name': 'chapter04_modelviewprojection',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'ModelViewProjection/ModelViewProjection.cpp',
+          ],
+        },
       ],
     }],
   ],
