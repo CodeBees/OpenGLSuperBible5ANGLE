@@ -30,6 +30,17 @@
             'Objects/Objects.cpp',
           ],
         },
+        {
+          'target_name': 'chapter04_orthographic',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'Orthographic/Orthographic.cpp',
+          ],
+        },
       ],
     }],
   ],
