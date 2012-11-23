@@ -9,7 +9,7 @@
     ['OS=="win"', {
       'targets': [
         {
-          'target_name': 'primitives',
+          'target_name': 'chapter03_primitives',
           'type': 'executable',
           'dependencies': [
             '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
@@ -20,7 +20,7 @@
           ],
         },
         {
-          'target_name': 'geotest',
+          'target_name': 'chapter03_geotest',
           'type': 'executable',
           'dependencies': [
             '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
@@ -31,7 +31,7 @@
           ],
         },
         {
-          'target_name': 'scissor',
+          'target_name': 'chapter03_scissor',
           'type': 'executable',
           'dependencies': [
             '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
@@ -42,7 +42,7 @@
           ],
         },
         {
-          'target_name': 'blending',
+          'target_name': 'chapter03_blending',
           'type': 'executable',
           'dependencies': [
             '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
@@ -53,7 +53,7 @@
           ],
         },
         {
-          'target_name': 'smoother',
+          'target_name': 'chapter03_smoother',
           'type': 'executable',
           'dependencies': [
             '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',

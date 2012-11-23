@@ -9,7 +9,7 @@
     ['OS=="win"', {
       'targets': [
         {
-          'target_name': 'pyramid',
+          'target_name': 'chapter05_pyramid',
           'type': 'executable',
           'dependencies': [
             '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',

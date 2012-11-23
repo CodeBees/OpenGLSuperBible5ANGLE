@@ -9,7 +9,7 @@
     ['OS=="win"', {
       'targets': [
         {
-          'target_name': 'triangle',
+          'target_name': 'chapter02_triangle',
           'type': 'executable',
           'dependencies': [
             '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
@@ -20,7 +20,7 @@
           ],
         },
         {
-          'target_name': 'move',
+          'target_name': 'chapter02_move',
           'type': 'executable',
           'dependencies': [
             '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
@@ -31,7 +31,7 @@
           ],
         },
         {
-          'target_name': 'bounce',
+          'target_name': 'chapter02_bounce',
           'type': 'executable',
           'dependencies': [
             '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
