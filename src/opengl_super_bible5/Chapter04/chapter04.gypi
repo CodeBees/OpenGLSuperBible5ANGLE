@@ -63,6 +63,17 @@
             'ModelViewProjection/ModelViewProjection.cpp',
           ],
         },
+        {
+          'target_name': 'chapter04_sphereworld',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'SphereWorld/SphereWorld.cpp',
+          ],
+        },
       ],
     }],
   ],
