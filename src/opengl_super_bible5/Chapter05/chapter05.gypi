@@ -27,6 +27,27 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter05_tunnel',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'Tunnel/Tunnel.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'Tunnel/brick.tga',
+                'Tunnel/ceiling.tga',
+                'Tunnel/floor.tga',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
