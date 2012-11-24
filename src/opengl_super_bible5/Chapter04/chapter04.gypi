@@ -96,6 +96,17 @@
             'SphereWorld3/SphereWorld3.cpp',
           ],
         },
+        {
+          'target_name': 'chapter04_sphereworld4',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'SphereWorld4/SphereWorld4.cpp',
+          ],
+        },
       ],
     }],
   ],
