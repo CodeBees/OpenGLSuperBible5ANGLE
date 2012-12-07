@@ -48,6 +48,27 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter05_anisotropic',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'Anisotropic/Tunnel.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'Anisotropic/brick.tga',
+                'Anisotropic/ceiling.tga',
+                'Anisotropic/floor.tga',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
