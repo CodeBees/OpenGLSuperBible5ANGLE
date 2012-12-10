@@ -69,6 +69,27 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter05_sphereworld',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'SphereWorld/SphereWorld.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'SphereWorld/Marble.tga',
+                'SphereWorld/Marslike.tga',
+                'SphereWorld/MoonLike.tga',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
