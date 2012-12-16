@@ -1,0 +1,16 @@
+// The ShadedIdentity Shader
+// Vertex Shader
+// Richard S. Wright Jr.
+// OpenGL SuperBible
+#version 100
+
+attribute vec4 vColor;
+attribute vec4 vVertex;
+
+varying vec4 vVaryingColor;
+
+void main(void) 
+    { 
+    vVaryingColor = vColor;
+    gl_Position = vVertex;
+    }
