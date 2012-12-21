@@ -1,0 +1,20 @@
+// ProvokingVertex flat shader demo
+// Vertex Shader
+// Richard S. Wright Jr.
+// OpenGL SuperBible
+#version 100
+
+attribute vec4 vColor;
+attribute vec4 vVertex;
+
+#ifndef GL_ES
+flat out vec4 vVaryingColor;
+#else
+varying vec4 vVaryingColor;
+#endif
+
+void main(void) 
+    { 
+    vVaryingColor = vColor;
+    gl_Position = vVertex;
+    }

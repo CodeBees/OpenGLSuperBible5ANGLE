@@ -28,6 +28,26 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter06_provokingvertex',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'provokingvertex/provokingvertex.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'provokingvertex/provokingvertex.fp',
+                'provokingvertex/provokingvertex.vp',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
