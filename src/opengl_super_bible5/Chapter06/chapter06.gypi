@@ -48,6 +48,26 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter06_flatshader',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'flatshader/flatshader.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'flatshader/flatshader.fp',
+                'flatshader/flatshader.vp',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
