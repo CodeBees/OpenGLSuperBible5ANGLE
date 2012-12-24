@@ -88,6 +88,26 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter06_adsgouraud',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'adsgouraud/adsgouraud.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'adsgouraud/adsgouraud.fp',
+                'adsgouraud/adsgouraud.vp',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
