@@ -68,6 +68,26 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter06_diffuselight',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'diffuselight/diffuselight.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'diffuselight/diffuselight.fp',
+                'diffuselight/diffuselight.vp',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
