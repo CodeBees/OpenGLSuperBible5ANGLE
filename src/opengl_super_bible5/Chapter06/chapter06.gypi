@@ -128,6 +128,27 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter06_texturedtriangle',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'texturedtriangle/texturedtriangle.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'texturedtriangle/stone.tga',
+                'texturedtriangle/texturedidentity.fp',
+                'texturedtriangle/texturedidentity.vp',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],

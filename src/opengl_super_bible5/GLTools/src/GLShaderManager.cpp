@@ -612,6 +612,9 @@ GLuint GLShaderManager::LoadShaderPairWithAttributes(const char *szVertexProgFil
     glGetShaderiv(hVertexShader, GL_COMPILE_STATUS, &testVal);
     if(testVal == GL_FALSE)
 		{
+		char infoLog[1024];
+		glGetShaderInfoLog(hVertexShader, 1024, NULL, infoLog);
+		fprintf(stderr, "The shader at %s failed to compile with the following error:\n%s\n", szVertexProgFileName, infoLog);
         glDeleteShader(hVertexShader);
         glDeleteShader(hFragmentShader);
         return 0;
@@ -620,6 +623,9 @@ GLuint GLShaderManager::LoadShaderPairWithAttributes(const char *szVertexProgFil
     glGetShaderiv(hFragmentShader, GL_COMPILE_STATUS, &testVal);
     if(testVal == GL_FALSE)
 		{
+		char infoLog[1024];
+		glGetShaderInfoLog(hVertexShader, 1024, NULL, infoLog);
+		fprintf(stderr, "The shader at %s failed to compile with the following error:\n%s\n", szFragmentProgFileName, infoLog);
         glDeleteShader(hVertexShader);
         glDeleteShader(hFragmentShader);
         return 0;
