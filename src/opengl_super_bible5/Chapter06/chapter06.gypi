@@ -108,6 +108,26 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter06_adsphong',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'adsphong/adsphong.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'adsphong/adsphong.fp',
+                'adsphong/adsphong.vp',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
