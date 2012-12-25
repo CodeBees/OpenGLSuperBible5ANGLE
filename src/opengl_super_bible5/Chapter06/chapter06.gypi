@@ -149,6 +149,27 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter06_littexture',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'littexture/littexture.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'littexture/ADSTexture.fp',
+                'littexture/ADSTexture.vp',
+                'littexture/CoolTexture.tga',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
