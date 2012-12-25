@@ -170,6 +170,27 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter06_dissolve',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'dissolve/dissolve.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'dissolve/clouds.tga',
+                'dissolve/dissolve.fp',
+                'dissolve/dissolve.vp',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
