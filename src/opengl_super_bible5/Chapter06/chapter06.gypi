@@ -191,6 +191,26 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter06_toonshader',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'toonshader/toonshader.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'toonshader/toonshader.fp',
+                'toonshader/toonshader.vp',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
