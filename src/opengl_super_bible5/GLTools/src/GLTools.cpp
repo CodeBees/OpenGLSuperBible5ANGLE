@@ -975,10 +975,11 @@ GLbyte *gltReadTGABits(const char *szFileName, GLint *iWidth, GLint *iHeight, GL
         case 4:
 #ifndef OPENGL_ES
             *eFormat = GL_BGRA;
+            *iComponents = GL_RGBA;
 #else
 			*eFormat = GL_BGRA_EXT;
+            *iComponents = GL_BGRA_EXT;
 #endif
-            *iComponents = GL_RGBA;
             break;
         case 1:
             *eFormat = GL_LUMINANCE;
