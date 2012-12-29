@@ -32,6 +32,34 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter07_cubemapped',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'cubemapped/cubemap.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'cubemapped/neg_x.tga',
+                'cubemapped/neg_y.tga',
+                'cubemapped/neg_z.tga',
+                'cubemapped/pos_x.tga',
+                'cubemapped/pos_y.tga',
+                'cubemapped/pos_z.tga',
+                'cubemapped/Reflection.fp',
+                'cubemapped/Reflection.vp',
+                'cubemapped/SkyBox.fp',
+                'cubemapped/SkyBox.vp',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
