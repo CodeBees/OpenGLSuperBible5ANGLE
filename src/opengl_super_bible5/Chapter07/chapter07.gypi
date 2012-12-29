@@ -60,6 +60,35 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter07_multitexture',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'multitexture/multitexture.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'multitexture/neg_x.tga',
+                'multitexture/neg_y.tga',
+                'multitexture/neg_z.tga',
+                'multitexture/pos_x.tga',
+                'multitexture/pos_y.tga',
+                'multitexture/pos_z.tga',
+                'multitexture/Reflection.fp',
+                'multitexture/Reflection.vp',
+                'multitexture/SkyBox.fp',
+                'multitexture/SkyBox.vp',
+                'multitexture/tarnish.tga',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
