@@ -89,6 +89,27 @@
             },
           ],
         },
+        {
+          'target_name': 'chapter07_pointsprites',
+          'type': 'executable',
+          'dependencies': [
+            '<(DEPTH)/third_party/esGLUT/esGLUT.gyp:esGLUT',
+            'gltools',
+          ],
+          'sources': [
+            'pointsprites/pointsprites.cpp',
+          ],
+          'copies': [
+            {
+              'destination': '<(PRODUCT_DIR)',
+              'files': [
+                'pointsprites/SpaceFlight.fp',
+                'pointsprites/SpaceFlight.vp',
+                'pointsprites/star.tga',
+              ],
+            },
+          ],
+        },
       ],
     }],
   ],
