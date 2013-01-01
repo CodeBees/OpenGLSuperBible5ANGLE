@@ -16,6 +16,7 @@
     'Chapter05/chapter05.gypi',
     'Chapter06/chapter06.gypi',
     'Chapter07/chapter07.gypi',
+    'Chapter08/chapter08.gypi',
   ],
   'targets': [
   ],
